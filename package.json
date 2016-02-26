@@ -1,0 +1,17 @@
+{
+  "name": "r2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node watchBabel.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "watch-babel":"latest",
+    "babel-preset-react": "^6.5.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  }
+}

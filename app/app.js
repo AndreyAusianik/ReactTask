@@ -1,0 +1,53 @@
+var App = React.createClass({
+	getInitialState: function() {
+		return {
+			minDate: '',
+			maxDate: ''
+		}
+	},
+	handlePick : function(date) {
+		date = new Date(date);
+		var oldMinDate = new Date(Date.parse(this.state.minDate));
+		var oldMaxDate = new Date(Date.parse(this.state.maxDate));
+
+		if(isNaN(oldMinDate)) {
+
+			this.state.minDate = date;
+
+		} else if(isNaN(oldMaxDate)) {
+
+			if(date < oldMinDate) {
+
+				this.setState({maxDate:this.state.minDate, minDate:date});
+
+			} else {
+
+				this.setState({maxDate:date});
+
+			}
+
+		} else if(date < oldMinDate) {
+
+			this.state.minDate = date;
+		
+		} else  {
+		
+			this.state.maxDate = date;
+		
+		}
+
+		this.forceUpdate();
+	},
+	render: function() {
+		return (
+				<div>
+					<input placeholder="from" value={this.state.minDate} disabled/>
+					<input placeholder="to"  value={this.state.maxDate} disabled/>
+					<Calendar handlePick={this.handlePick} minDate={this.state.minDate} maxDate={this.state.maxDate}/>
+				</div>
+				);
+	}
+});
+
+
+ReactDOM.render(<App/>, document.querySelector('app') );

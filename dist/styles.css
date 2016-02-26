@@ -1,0 +1,43 @@
+app header {
+	display: flex;
+	justify-content: space-around;
+	font-size: 2em;
+}
+app header :not(:nth-child(2)) {
+	cursor:pointer;
+}
+app input {
+	display: inline-block;
+	width: 40%;
+	margin: 10px;
+	height: 30px;
+	font-size: 0.8em;
+	border-radius: 4px;
+}
+app {
+	display: inline-block;
+}
+
+app table {
+	width: 100%;
+	text-align: center;
+	box-shadow: 2px 2px 4px 2px;
+	border-collapse: collapse;
+}
+
+app table th {
+	border-bottom: 1px solid black;
+}
+app table td:not(:empty) {
+	background-color: rgba(255,0,0,0.3);
+	cursor: pointer;
+	line-height: 40px;
+	width: 40px;
+	margin: 3px;
+	border-radius: 50%;
+	}
+
+app table .disabled {
+	opacity: 0.4;
+	cursor: default;
+}
