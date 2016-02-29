@@ -1,24 +1,25 @@
-var numbersArr = new Array(36).join('0').split('').map((el,idx)=>idx+1);
-
-var Calendar = React.createClass({
+let Calendar = React.createClass({
 	getInitialState: function() {
-		var ret = {
+		let ret = {
 			currentDate : new Date()
 		}
 		ret.currentDate.setDate(1);
 		return ret;
 	},
+	moveToDay: function(day) {
+		this.setState({currentDate:new Date(this.state.currentDate.getFullYear(),day,1)});
+	},
 	forward: function() {
-		this.setState({currentDate:new Date(this.state.currentDate.getFullYear(),this.state.currentDate.getMonth()+1,1)});
+		this.moveToDay(this.state.currentDate.getMonth()+1);
 	},
 
 	backward: function() {
-		this.setState({currentDate:new Date(this.state.currentDate.getFullYear(),this.state.currentDate.getMonth()-1,1)});
+		this.moveToDay(this.state.currentDate.getMonth()-1);
 	},
 	
 	render: function() {
-		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-		var days = ['Sun',"Mon",'Tue','Wed','Thu','Fri','Sat'];
+		let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		let days = ['Sun',"Mon",'Tue','Wed','Thu','Fri','Sat'];
 		return (
 				<div className="calendar">
 					<header>
@@ -37,10 +38,9 @@ var Calendar = React.createClass({
 								)}
 						</tr>
 						</thead>
-						<CalendarBody handleDatePick={this.props.handlePick} currentDate={this.state.currentDate} minDate={this.props.minDate} maxDate={this.props.maxDate}/>
+						<CalendarBody {...this.props} {...this.state} handleDatePick = {this.props.handlePick}/>
 					</table>
 				</div>
 			);
 	}
 });
-

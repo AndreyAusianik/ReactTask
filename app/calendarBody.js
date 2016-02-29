@@ -1,22 +1,23 @@
-var CalendarBody = React.createClass({
+let CalendarBody = React.createClass({
 	fillDates: function() {
-		var dates = [];
-		var date = new Date(this.props.currentDate);
-		var lastday = new Date(this.props.currentDate.getFullYear(), this.props.currentDate.getMonth()+1,0).getDate();
-		var day = date.getDay();
+		let dates = [];
+		let date = new Date(this.props.currentDate);
+		let lastday = new Date(this.props.currentDate.getFullYear(), this.props.currentDate.getMonth()+1,0).getDate();
+		let day = date.getDay();
 
 		for(let i=0; i < day; i++) {
 			dates.push('');
 		}
 
 		for(let i = day; i < lastday + day; i++) {
-			var curDay = new Date();
+			let curDay = new Date();
 			
 			curDay.setYear(date.getFullYear());
 			curDay.setMonth(date.getMonth());
 			curDay.setDate(1 + i - day);
 			
-			let disabled = this.props.minDate != "" && curDay < this.props.minDate || (this.props.maxDate !== "" && curDay > this.props.maxDate);
+			let disabled = 	this.props.minDate !== "" && curDay < this.props.minDate || 
+							this.props.maxDate !== "" && curDay > this.props.maxDate;
 			
 			dates.push({value: '' + (1 + i - day), className: disabled ? 'disabled' : ''})
 
@@ -38,20 +39,21 @@ var CalendarBody = React.createClass({
 
 	dateClick: function(evt) {
 
-		var el = evt.target;
-		var value = el.innerHTML;
+		let el = evt.target;
+		let value = el.innerHTML;
+
 		if(value == '')
 			return;
 		
 		value = +value;
-		var dateToSet = new Date(this.state.firstDate);
+		let dateToSet = new Date(this.state.firstDate);
 		dateToSet.setDate(value);
 		this.props.handleDatePick(dateToSet);
 	},
 
 	render: function() {
 		this.state.firstDate = this.props.currentDate;
-		var dates = this.fillDates();
+		let dates = this.fillDates();
 
 		return (
 			<tbody>

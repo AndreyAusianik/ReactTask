@@ -12,7 +12,7 @@ var App = React.createClass({
 
 		if(isNaN(oldMinDate)) {
 
-			this.state.minDate = date;
+			this.setState({minDate:date});
 
 		} else if(isNaN(oldMaxDate)) {
 
@@ -28,15 +28,14 @@ var App = React.createClass({
 
 		} else if(date < oldMinDate) {
 
-			this.state.minDate = date;
+			this.setState({minDate:date});
 		
 		} else  {
 		
-			this.state.maxDate = date;
+			this.setState({maxDate:date});
 		
 		}
 
-		this.forceUpdate();
 	},
 	render: function() {
 		return (
@@ -50,4 +49,4 @@ var App = React.createClass({
 });
 
 
-ReactDOM.render(<App/>, document.querySelector('app') );
+ReactDOM.render(<App/>, document.querySelector('.app') );
