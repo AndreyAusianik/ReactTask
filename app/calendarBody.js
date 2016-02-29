@@ -17,7 +17,7 @@ let CalendarBody = React.createClass({
 			curDay.setDate(1 + i - day);
 			
 			let disabled = 	this.props.minDate !== "" && curDay < this.props.minDate || 
-							this.props.maxDate !== "" && curDay > this.props.maxDate;
+							this.props.maxDate !== "" && curDay-1000*3600*24 > this.props.maxDate;
 			
 			dates.push({value: '' + (1 + i - day), className: disabled ? 'disabled' : ''})
 

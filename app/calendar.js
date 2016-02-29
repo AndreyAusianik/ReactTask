@@ -22,14 +22,14 @@ let Calendar = React.createClass({
 		let days = ['Sun',"Mon",'Tue','Wed','Thu','Fri','Sat'];
 		return (
 				<div className="calendar">
-					<header>
+					<div className="header">
 						<div onClick={this.backward}>&#8656;</div>
 						<div className="month-name">
 						{months[this.state.currentDate.getMonth()]} 
 						{this.state.currentDate.getFullYear()}
 						</div>
 						<div onClick={this.forward}>&#8658;</div>
-					</header>
+					</div>
 					<table>
 						<thead>
 						<tr>

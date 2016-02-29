@@ -1,7 +1,7 @@
 var watchBabel = require("watch-babel");
  
 var srcDir = "./app";
-var destDir = "./dist";
+var destDir = "./dist/scripts";
 var options = { glob: "**/*.js" };
 var watcher = watchBabel(srcDir, destDir, options);
 watcher.on("ready", function() { console.log("ready"); });

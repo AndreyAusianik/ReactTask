@@ -1,9 +1,9 @@
-.app header {
+.app .header {
 	display: flex;
 	justify-content: space-around;
 	font-size: 2em;
 }
-.app header :not(:nth-child(2)) {
+.app .header :not(:nth-child(2)) {
 	cursor:pointer;
 }
 .app input {

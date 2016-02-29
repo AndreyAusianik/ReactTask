@@ -42,7 +42,7 @@ var App = React.createClass({
 				<div>
 					<input placeholder="from" value={this.state.minDate} disabled/>
 					<input placeholder="to"  value={this.state.maxDate} disabled/>
-					<Calendar handlePick={this.handlePick} minDate={this.state.minDate} maxDate={this.state.maxDate}/>
+					<Calendar handlePick={this.handlePick} {...this.state}/>
 				</div>
 				);
 	}
