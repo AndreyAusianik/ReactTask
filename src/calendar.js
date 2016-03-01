@@ -1,4 +1,3 @@
-import React from 'react';
 import CalendarBody from './calendarBody';
 
 export default React.createClass({
@@ -21,8 +20,8 @@ export default React.createClass({
 	},
 	
 	render: function() {
-		let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-		let days = ['Sun',"Mon",'Tue','Wed','Thu','Fri','Sat'];
+		const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		const days = ['Sun',"Mon",'Tue','Wed','Thu','Fri','Sat'];
 		return (
 				<div className="calendar">
 					<div className="header">

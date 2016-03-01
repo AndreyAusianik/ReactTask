@@ -1,6 +1,4 @@
-import React from 'react';
 import Calendar from './calendar';
-
 
 export default React.createClass({
 
