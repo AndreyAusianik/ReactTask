@@ -1,2 +1,4 @@
 node_modules
-dist/scripts
+npm-debug.log
+.DS_Store
+dist

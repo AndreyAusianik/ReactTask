@@ -1,10 +1,16 @@
-var App = React.createClass({
+import React from 'react';
+import Calendar from './calendar';
+
+
+export default React.createClass({
+
 	getInitialState: function() {
 		return {
 			minDate: '',
 			maxDate: ''
 		}
 	},
+
 	handlePick : function(date) {
 		date = new Date(date);
 		var oldMinDate = new Date(Date.parse(this.state.minDate));
@@ -37,6 +43,7 @@ var App = React.createClass({
 		}
 
 	},
+
 	render: function() {
 		return (
 				<div>
@@ -49,4 +56,3 @@ var App = React.createClass({
 });
 
 
-ReactDOM.render(<App/>, document.querySelector('.app') );

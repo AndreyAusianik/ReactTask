@@ -1,4 +1,7 @@
-let Calendar = React.createClass({
+import React from 'react';
+import CalendarBody from './calendarBody';
+
+export default React.createClass({
 	getInitialState: function() {
 		let ret = {
 			currentDate : new Date()
@@ -25,7 +28,7 @@ let Calendar = React.createClass({
 					<div className="header">
 						<div onClick={this.backward}>&#8656;</div>
 						<div className="month-name">
-						{months[this.state.currentDate.getMonth()]} 
+						{months[this.state.currentDate.getMonth()]}&nbsp;
 						{this.state.currentDate.getFullYear()}
 						</div>
 						<div onClick={this.forward}>&#8658;</div>

@@ -1,4 +1,6 @@
-let CalendarBody = React.createClass({
+import React from 'react';
+
+export default React.createClass({
 	fillDates: function() {
 		let dates = [];
 		let date = new Date(this.props.currentDate);
