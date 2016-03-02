@@ -1,29 +1,47 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var STAGE = process.argv[2] || "PROD";
+
 module.exports = {
-  devtool: 'eval',
+  devtool: STAGE=="DEV"?'eval':'cheap-module-source-map',
+
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     './src/index'
-  ],
+  ].concat(STAGE=="DEV"?[
+    'webpack/hot/only-dev-server',
+    'webpack-dev-server/client?http://localhost:3000']:[]),
+
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
+
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    
     new webpack.ProvidePlugin({
       React: 'react',
       ReactDOM: 'react-dom'
     })
-  ],
+  ].concat(  STAGE=="DEV"?[
+    new webpack.HotModuleReplacementPlugin()
+    ]: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      }),
+      new webpack.optimize.UglifyJsPlugin({minimize:true})
+    ]),
+
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: (STAGE=="DEV"?
+        ['react-hot']:
+        [ ])
+      .concat([ 'babel']),
       include: path.join(__dirname, 'src')
     },{
       test: /\.css$/,

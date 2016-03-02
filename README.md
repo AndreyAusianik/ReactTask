@@ -1,9 +1,11 @@
 # ReactTask
 
-
-to start dev server you can:
+to start dev server at port 3000:
 ```
-git clone ...
-npm i
 npm start
+```
+
+to compile production version of the app use 
+```
+npm run-script prod
 ```
